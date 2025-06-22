@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|D:\\Projects\\LASM\\output.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|solutionrelative:output.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|D:\\Projects\\LASM\\structs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|solutionrelative:structs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|D:\\Projects\\LASM\\output.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|solutionrelative:output.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|D:\\Projects\\LASM\\output.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "D:\\Projects\\LASM\\main.c",
               "RelativeToolTip": "main.c",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAmwCsAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAkwCMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-06-19T11:32:43.561Z",
               "IsPinned": true,
@@ -44,13 +44,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "structs.h",
               "DocumentMoniker": "D:\\Projects\\LASM\\structs.h",
               "RelativeDocumentMoniker": "structs.h",
               "ToolTip": "D:\\Projects\\LASM\\structs.h",
               "RelativeToolTip": "structs.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwA0AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-19T11:48:04.225Z",
               "IsPinned": true,
@@ -58,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "output.c",
               "DocumentMoniker": "D:\\Projects\\LASM\\output.c",
               "RelativeDocumentMoniker": "output.c",

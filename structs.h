@@ -14,6 +14,7 @@ typedef struct CPU
     uint8_t RAM[256];
 } CPU;
 
+#define OPCODE_AMOUNT 11
 typedef enum Opcode
 {
     NON = 0,
@@ -25,22 +26,27 @@ typedef enum Opcode
     DIV,
     WRM,
     RDM,
+    CMP,
     HLT
 } Opcode;
 
-typedef enum Register
+typedef enum OperandType
 {
-    NO = 0,
-    R0,
-    R1,
-    R2,
-    R3
-} Register;
+    No = 0,
+    Register,
+    Number,
+    Cell,
+} OperandType;
 
+typedef struct Operand
+{
+    int32_t value;
+    OperandType type;
+} Operand;
 
 typedef struct Command
 {
     Opcode opcode;
-    Register _register;
-    int32_t Operand;
+    Operand Operand1;
+    Operand Operand2;
 } Command;
