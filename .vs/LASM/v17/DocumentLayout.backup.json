@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Projects\\LASM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|D:\\Projects\\LASM\\io.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|solutionrelative:io.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|D:\\Projects\\LASM\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|D:\\Projects\\LASM\\io.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|solutionrelative:io.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5391F7AC-D8C7-4ABA-BCA4-FC2F6EA841A4}|LASM.vcxproj|D:\\Projects\\LASM\\structs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -26,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "main.c",
               "DocumentMoniker": "D:\\Projects\\LASM\\main.c",
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "D:\\Projects\\LASM\\main.c",
               "RelativeToolTip": "main.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-06-19T11:32:43.561Z",
               "IsPinned": true,
@@ -58,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "io.c",
               "DocumentMoniker": "D:\\Projects\\LASM\\io.c",
               "RelativeDocumentMoniker": "io.c",

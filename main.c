@@ -118,9 +118,11 @@ inline void operandTypeDef(Operand* operand, char** blob)
         case '#':
             operand->type = Cell;
             (*blob)++;
+            break;
         case 'R':
             operand->type = Register;
             (*blob)++;
+            break;
         default:
             operand->type = Number;
             break;
