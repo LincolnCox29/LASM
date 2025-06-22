@@ -74,9 +74,9 @@ char* parsArgs(int argc, char* argv[])
             fprintf(stderr, "USAGE: LASM <pathToProgram>\n");
             exit(2);
         }
-            fprintf(stderr, "ERROR: Too many arguments\n");
-            fprintf(stderr, "USAGE: LASM <pathToProgram>\n");
-            exit(3);
+        fprintf(stderr, "ERROR: Too many arguments\n");
+        fprintf(stderr, "USAGE: LASM <pathToProgram>\n");
+        exit(3);
     }
     const char* filename = argv[1];
     const char* dot = strrchr(argv[1], '.');

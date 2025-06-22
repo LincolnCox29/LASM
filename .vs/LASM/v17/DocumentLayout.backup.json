@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "D:\\Projects\\LASM\\main.c",
               "RelativeToolTip": "main.c",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAmwKYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAArwC4AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-06-19T11:32:43.561Z",
               "IsPinned": true,
@@ -64,7 +64,7 @@
               "RelativeDocumentMoniker": "io.c",
               "ToolTip": "D:\\Projects\\LASM\\io.c",
               "RelativeToolTip": "io.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-06-21T11:23:15.981Z",
               "EditorCaption": ""
@@ -79,8 +79,7 @@
               "RelativeToolTip": "io.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-21T11:23:00.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-21T11:23:00.934Z"
             }
           ]
         }

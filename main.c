@@ -11,7 +11,7 @@
 Opcode spotOpcode(char* blob);
 bool strEquals(char* str1, char* str2, size_t len);
 void skipSpace(char** curCharPtrPtr);
-Operand* extractOperand(char** blob);
+Operand extractOperand(char** blob);
 Command parsCommand(char** curCharPtr);
 void executionCommand(Command* cmd, CPU* cpu);
 inline void operandTypeDef(Operand* operand, char** blob);
@@ -44,9 +44,9 @@ Command parsCommand(char** curCharPtr)
         return cmd;
     (*curCharPtr) += 3;
     skipSpace(curCharPtr);
-    cmd.Operand1 = *extractOperand(curCharPtr);
+    cmd.Operand1 = extractOperand(curCharPtr);
     skipSpace(curCharPtr);
-    cmd.Operand2 = *extractOperand(curCharPtr);
+    cmd.Operand2 = extractOperand(curCharPtr);
     return cmd;
 }
 
@@ -93,7 +93,7 @@ void executionCommand(Command* cmd, CPU* _cpu)
     }
 }
 
-Operand* extractOperand(char** blob)
+Operand extractOperand(char** blob)
 {
     Operand operand;
     operandTypeDef(&operand, blob);
@@ -108,7 +108,7 @@ Operand* extractOperand(char** blob)
     (*blob) += len;
     if (operand.type == Number)
         (*blob)--;
-    return &operand;
+    return operand;
 }
 
 inline void operandTypeDef(Operand* operand, char** blob)
