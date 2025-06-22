@@ -5,36 +5,9 @@
 #include <stdlib.h>
 #include "stdio.h"
 
-#include "output.h"
+#include "io.h"
 
 #define DEBUG
-
-char* programm =
-                "; hello world\n"
-                "MOV R0 72\n"
-                "WRM R0 16\n"
-                "MOV R0 101\n"
-                "WRM R0 17\n"
-                "MOV R0 108\n"
-                "WRM R0 18\n"
-                "WRM R0 19\n"
-                "MOV R0 111\n"
-                "WRM R0 20\n"
-                "MOV R0 32\n"
-                "WRM R0 21\n"
-                "MOV R0 87\n"
-                "WRM R0 22\n"
-                "MOV R0 111\n"
-                "WRM R0 23\n"
-                "MOV R0 114\n"
-                "WRM R0 24\n"
-                "MOV R0 108\n"
-                "WRM R0 25\n"
-                "MOV R0 100\n"
-                "WRM R0 26\n"
-                "; test CMP\n"
-                "CMP #18 #19\n"
-                "HLT";
 
 Opcode spotOpcode(char* blob);
 bool strEquals(char* str1, char* str2, size_t len);
@@ -44,8 +17,9 @@ Command parsCommand(char** curCharPtr);
 void executionCommand(Command* cmd, CPU* cpu);
 inline void operandTypeDef(Operand* operand, char** blob);
 
-int main()
+int main(int argc, char* argv[])
 {
+    char* programm = parsArgs(argc, argv);
     CPU _cpu = (CPU){0};
     char* curCharPtr = programm;
     while (*curCharPtr != '\0')
@@ -67,8 +41,8 @@ Command parsCommand(char** curCharPtr)
     Command cmd = { 0 };
     skipSpace(curCharPtr);
     cmd.opcode = spotOpcode(*curCharPtr);
-    if (cmd.opcode == NON)
-        return (Command) {0};
+    if (cmd.opcode == NON || cmd.opcode == HLT)
+        return cmd;
     (*curCharPtr) += 3;
     skipSpace(curCharPtr);
     cmd.Operand1 = *extractOperand(*curCharPtr);

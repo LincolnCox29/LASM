@@ -1,4 +1,2 @@
-﻿  main.c
-D:\Projects\LASM\main.c(88,28): warning C4013: getOperandValue: нет определения; предполагается "extern" с возвратом типа "int"
-D:\Projects\LASM\main.c(137,1): warning C4172: возвращаемый адрес локальной переменной или временного : operand
+﻿  io.c
   LASM.vcxproj -> D:\Projects\LASM\x64\Debug\LASM.exe
