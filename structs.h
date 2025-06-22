@@ -14,7 +14,7 @@ typedef struct CPU
     uint8_t RAM[256];
 } CPU;
 
-#define OPCODE_AMOUNT 9
+#define OPCODE_AMOUNT 12
 typedef enum Opcode
 {
     NON = 0,
@@ -25,6 +25,9 @@ typedef enum Opcode
     MUL,
     DIV,
     CMP,
+    JMP,
+    JIZ,
+    JNZ,
     HLT
 } Opcode;
 

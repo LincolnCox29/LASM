@@ -1,5 +1,3 @@
-﻿  io.c
-  main.c
-D:\Projects\LASM\main.c(61,32): warning C4013: getOperandValue: нет определения; предполагается "extern" с возвратом типа "int"
-  Создание кода...
+﻿  main.c
+D:\Projects\LASM\main.c(103,32): warning C4013: getOperandValue: нет определения; предполагается "extern" с возвратом типа "int"
   LASM.vcxproj -> D:\Projects\LASM\x64\Debug\LASM.exe

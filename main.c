@@ -15,6 +15,7 @@ Operand extractOperand(char** blob);
 Command parsCommand(char** curCharPtr);
 void executionCommand(Command* cmd, CPU* cpu);
 inline void operandTypeDef(Operand* operand, char** blob);
+void Jump(Command* cmd, CPU* _cpu, char** blob, char* programm);
 
 int main(int argc, char* argv[])
 {
@@ -25,7 +26,15 @@ int main(int argc, char* argv[])
     {
         Command cmd = parsCommand(&curCharPtr);
         if (cmd.opcode != NON)
-            executionCommand(&cmd, &_cpu);
+        {
+            if (cmd.opcode == JMP || cmd.opcode == JIZ || cmd.opcode == JNZ)
+            {
+                Jump(&cmd, &_cpu, &curCharPtr, programm);
+                continue;
+            }
+            else
+                executionCommand(&cmd, &_cpu);
+        }
         curCharPtr = strchr(curCharPtr, '\n') + 1;
     }
 #ifdef DEBUG
@@ -45,11 +54,43 @@ Command parsCommand(char** curCharPtr)
     (*curCharPtr) += 3;
     skipSpace(curCharPtr);
     cmd.Operand1 = extractOperand(curCharPtr);
+    if (cmd.opcode == JMP || cmd.opcode == JIZ || cmd.opcode == JNZ)
+        return cmd;
     skipSpace(curCharPtr);
     cmd.Operand2 = extractOperand(curCharPtr);
     return cmd;
 }
 
+void Jump(Command* cmd, CPU* _cpu, char** blob, char* programm)
+{
+    if (
+        (cmd->opcode == JNZ && !_cpu->Z) ||
+        (cmd->opcode == JIZ && _cpu->Z) ||
+        (cmd->opcode == JMP))
+    {
+        char* newPos = programm;
+        int targetLine = cmd->Operand1.value;
+
+        for (int i = 0; i < targetLine; i++)
+        {
+            newPos = strchr(newPos, '\n');
+            if (!newPos)
+                break;
+            newPos++;
+        }
+
+        if (newPos)
+        {
+            *blob = newPos;
+        }
+        else
+        {
+            *blob = programm + strlen(programm);
+        }
+    }
+    else
+        *blob = strchr(*blob, '\n') + 1;
+}
 void executionCommand(Command* cmd, CPU* _cpu)
 {
     int32_t *registerPtr = &(_cpu->R0) + cmd->Operand1.value;
@@ -133,7 +174,8 @@ Opcode spotOpcode(char* blob)
 {
     if (*blob == '\n' || *blob == ';')
         return NON;
-    char opcodes[OPCODE_AMOUNT][3] = { "NON", "ERR", "MOV", "ADD", "SUB", "MUL", "DIV", "CMP", "HLT"};
+    char opcodes[OPCODE_AMOUNT][3] = 
+        { "NON", "ERR", "MOV", "ADD", "SUB", "MUL", "DIV", "CMP", "JMP", "JIZ", "JNZ", "HLT"};
     for (int i = 2; i < OPCODE_AMOUNT; i++)
         if (strEquals(blob, opcodes[i], 3))
             return (Opcode) { i };

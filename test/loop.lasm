@@ -1,0 +1,5 @@
+MOV R1 5
+SUB R1 1
+CMP R1 0
+JNZ 1
+HLT
