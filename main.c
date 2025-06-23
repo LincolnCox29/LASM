@@ -11,8 +11,8 @@
 Opcode spotOpcode(char* blob);
 bool strEquals(char* str1, char* str2, size_t len);
 void skipSpace(char** curCharPtrPtr);
-Operand extractOperand(char** blob);
-Command parsCommand(char** curCharPtr);
+Operand extractOperand(char** blob, CPU* _cpu);
+Command parsCommand(char** curCharPtr, CPU* _cpu);
 void executionCommand(Command* cmd, CPU* cpu);
 inline void operandTypeDef(Operand* operand, char** blob);
 void Jump(Command* cmd, CPU* _cpu, char** blob, char* programm);
@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
     char* curCharPtr = programm;
     while (*curCharPtr != '\0')
     {
-        Command cmd = parsCommand(&curCharPtr);
+        Command cmd = parsCommand(&curCharPtr, &_cpu);
         if (cmd.opcode != NON)
         {
             if (cmd.opcode == JMP || cmd.opcode == JIZ || cmd.opcode == JNZ)
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-Command parsCommand(char** curCharPtr)
+Command parsCommand(char** curCharPtr, CPU* _cpu)
 {
     Command cmd = { 0 };
     skipSpace(curCharPtr);
@@ -53,11 +53,11 @@ Command parsCommand(char** curCharPtr)
         return cmd;
     (*curCharPtr) += 3;
     skipSpace(curCharPtr);
-    cmd.Operand1 = extractOperand(curCharPtr);
+    cmd.Operand1 = extractOperand(curCharPtr, _cpu);
     if (cmd.opcode == JMP || cmd.opcode == JIZ || cmd.opcode == JNZ)
         return cmd;
     skipSpace(curCharPtr);
-    cmd.Operand2 = extractOperand(curCharPtr);
+    cmd.Operand2 = extractOperand(curCharPtr, _cpu);
     return cmd;
 }
 
@@ -134,8 +134,14 @@ void executionCommand(Command* cmd, CPU* _cpu)
     }
 }
 
-Operand extractOperand(char** blob)
+Operand extractOperand(char** blob, CPU* _cpu)
 {
+    bool isPtr = false;
+    if (**blob == '@')
+    {
+        isPtr = true;
+        (*blob)++;
+    }
     Operand operand;
     operandTypeDef(&operand, blob);
     size_t len = 0;
@@ -148,7 +154,23 @@ Operand extractOperand(char** blob)
     free(digitRow);
     (*blob) += len;
     if (operand.type == Number)
+    {
         (*blob)--;
+        return operand;
+    }
+    if (isPtr)
+    {
+        switch (operand.type)
+        {
+            case Register:
+                operand.value = *(&_cpu->R0 + operand.value);
+                break;
+            case Cell:
+                operand.value = _cpu->RAM[operand.value];
+                break;
+        }
+        operand.type = Cell;
+    }
     return operand;
 }
 
