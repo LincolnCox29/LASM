@@ -1,6 +1,0 @@
-; loop
-MOV @R1 R1
-ADD R1 1
-CMP R1 16
-JNZ 1
-HLT

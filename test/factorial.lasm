@@ -1,0 +1,8 @@
+MOV R0 5     ; Calculate 5!
+MOV R1 1     ; Result
+;fact_loop
+MUL R1 R0
+SUB R0 1
+CMP R0 0
+JNZ 3
+HLT          ; R1 = 120 (5!)

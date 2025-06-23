@@ -54,7 +54,7 @@ Command parsCommand(char** curCharPtr, CPU* _cpu)
     (*curCharPtr) += 3;
     skipSpace(curCharPtr);
     cmd.Operand1 = extractOperand(curCharPtr, _cpu);
-    if (cmd.opcode == JMP || cmd.opcode == JIZ || cmd.opcode == JNZ)
+    if (cmd.opcode > 7 && cmd.opcode < 15)
         return cmd;
     skipSpace(curCharPtr);
     cmd.Operand2 = extractOperand(curCharPtr, _cpu);
@@ -64,13 +64,16 @@ Command parsCommand(char** curCharPtr, CPU* _cpu)
 void Jump(Command* cmd, CPU* _cpu, char** blob, char* programm)
 {
     if (
+        (cmd->opcode == JLE && (_cpu->Z || _cpu->C)) ||
+        (cmd->opcode == JAE && (_cpu->Z || !_cpu->C)) ||
+        (cmd->opcode == JIA && !_cpu->Z && !_cpu->C ) ||
         (cmd->opcode == JNZ && !_cpu->Z) ||
+        (cmd->opcode == JIL && _cpu->C) ||
         (cmd->opcode == JIZ && _cpu->Z) ||
         (cmd->opcode == JMP))
     {
         char* newPos = programm;
         int targetLine = cmd->Operand1.value;
-
         for (int i = 0; i < targetLine; i++)
         {
             newPos = strchr(newPos, '\n');
@@ -78,7 +81,6 @@ void Jump(Command* cmd, CPU* _cpu, char** blob, char* programm)
                 break;
             newPos++;
         }
-
         if (newPos)
         {
             *blob = newPos;
@@ -130,6 +132,7 @@ void executionCommand(Command* cmd, CPU* _cpu)
             break;
         case CMP:
             _cpu->Z = (getOperandValue(_cpu, &cmd->Operand1) == getOperandValue(_cpu, &cmd->Operand2));
+            _cpu->C = (getOperandValue(_cpu, &cmd->Operand1) < getOperandValue(_cpu, &cmd->Operand2));
             break;
     }
 }
@@ -196,8 +199,12 @@ Opcode spotOpcode(char* blob)
 {
     if (*blob == '\n' || *blob == ';')
         return NON;
-    char opcodes[OPCODE_AMOUNT][3] = 
-        { "NON", "ERR", "MOV", "ADD", "SUB", "MUL", "DIV", "CMP", "JMP", "JIZ", "JNZ", "HLT"};
+    char opcodes[OPCODE_AMOUNT][3] = { 
+        "NON", "ERR", "MOV", "ADD", "SUB", "MUL", "DIV", 
+        "CMP", 
+        "JMP", "JIZ", "JNZ", "JIA", "JIL", "JAE", "JLE", 
+        "HLT"
+    };
     for (int i = 2; i < OPCODE_AMOUNT; i++)
         if (strEquals(blob, opcodes[i], 3))
             return (Opcode) { i };

@@ -16,6 +16,7 @@ void printCpuState(CPU* _cpu)
     printf("\n| R3        | %-8d |", _cpu->R3);
     printf("\n+-----------+----------+");
     printf("\n| ZF        | %-8d |", _cpu->Z);
+    printf("\n| CF        | %-8d |", _cpu->C);
     printf("\n-------------------------\n");
 }
 
