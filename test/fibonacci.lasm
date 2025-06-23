@@ -1,0 +1,13 @@
+MOV R0 8       ; Desired Fibonacci number (e.g., 8th)
+MOV R1 0       ; F(0) = 0
+MOV R2 1       ; F(1) = 1
+MOV R3 2       ; Counter (start from 2)
+
+;fib_loop
+MOV R4 R2      ; Save previous number
+ADD R2 R1      ; R2 = F(n) = F(n-1) + F(n-2)
+MOV R1 R4      ; Update F(n-2)
+ADD R3 1       ; Increment counter
+CMP R3 R0
+JLE 6          ; Repeat while R3 <= R0
+HLT            ; Result in R2 (e.g., for R0=8 → R2=21)
