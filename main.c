@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
         Command cmd = parsCommand(&curCharPtr, &_cpu);
         if (cmd.opcode != NON)
         {
-            if (cmd.opcode == JMP || cmd.opcode == JIZ || cmd.opcode == JNZ)
+            if (cmd.opcode > 7 && cmd.opcode < 15)
             {
                 Jump(&cmd, &_cpu, &curCharPtr, programm);
                 continue;
