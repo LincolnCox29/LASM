@@ -81,18 +81,12 @@ void Jump(Command* cmd, CPU* _cpu, char** blob, char* programm)
                 break;
             newPos++;
         }
-        if (newPos)
-        {
-            *blob = newPos;
-        }
-        else
-        {
-            *blob = programm + strlen(programm);
-        }
+        *blob = newPos;
     }
     else
         *blob = strchr(*blob, '\n') + 1;
 }
+
 void executionCommand(Command* cmd, CPU* _cpu)
 {
     int32_t *registerPtr = &(_cpu->R0) + cmd->Operand1.value;
